@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AppData, Transaction } from "../types/models";
+import type { AppData, Transaction } from "../types/models";
 import {
   getTransactionVisuals,
   getStatusTextAndIcon,

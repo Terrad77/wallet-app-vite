@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { AppData } from "../types/models";
+import { type AppData } from "../types/models";
 interface AppDataState {
   data: AppData | null;
   loading: boolean;

@@ -1,5 +1,5 @@
 // src/utils/transactionUtils.ts
-import { Transaction, TransactionStatus } from "../types/models";
+import type { Transaction, TransactionStatus } from "../types/models";
 
 interface TransactionVisuals {
   icon: string;

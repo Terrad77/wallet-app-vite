@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useAppData } from "./hooks/useAppData"; // Убедитесь, что этот файл существует
 import TransactionListScreen from "./screens/TransactionListScreen"; // Создайте этот файл
