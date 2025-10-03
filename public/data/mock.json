@@ -1,0 +1,80 @@
+{
+  "cardBalance": {
+    "balance": 917.3,
+    "cardNumber": "**** 5304",
+    "cardName": "Visa Signature"
+  },
+  "dailyPoints": {
+    "currentPoints": 1500,
+    "dailyIncrease": 125
+  },
+  "noPaymentDue": true,
+  "transactions": [
+    {
+      "id": "1001",
+      "type": "Payment",
+      "title": "Apple",
+      "amount": -877.0,
+      "currency": "USD",
+      "transactionName": "Apple Pay",
+      "transactionDescription": "MacBook Pro M4 Payment",
+      "date": "2025-10-02T15:30:00Z",
+      "status": "Success"
+    },
+    {
+      "id": "1002",
+      "type": "Withdrawal",
+      "title": "ATM Withdrawal",
+      "amount": -32.04,
+      "currency": "USD",
+      "transactionName": "Cash",
+      "transactionDescription": "Local ATM Fee",
+      "date": "2025-10-02T10:15:00Z",
+      "status": "Success"
+    },
+    {
+      "id": "1003",
+      "type": "Transfer",
+      "title": "Starbucks",
+      "amount": -8.5,
+      "currency": "USD",
+      "transactionName": "Coffee",
+      "transactionDescription": "Morning coffee order",
+      "date": "2025-10-01T08:00:00Z",
+      "status": "Success"
+    },
+    {
+      "id": "1004",
+      "type": "Payment",
+      "title": "Gym Club",
+      "amount": -59.99,
+      "currency": "USD",
+      "transactionName": "Fitness",
+      "transactionDescription": "Monthly Membership",
+      "date": "2025-09-30T17:45:00Z",
+      "status": "Pending"
+    },
+    {
+      "id": "1005",
+      "type": "Top-up",
+      "title": "Salary",
+      "amount": 4720.0,
+      "currency": "USD",
+      "transactionName": "Salary",
+      "transactionDescription": "Monthly Income Transfer",
+      "date": "2025-09-28T09:00:00Z",
+      "status": "Success"
+    },
+    {
+      "id": "1006",
+      "type": "Payment",
+      "title": "Amazon",
+      "amount": -22.45,
+      "currency": "USD",
+      "transactionName": "Shopping",
+      "transactionDescription": "Book order",
+      "date": "2025-09-28T14:22:00Z",
+      "status": "Failed"
+    }
+  ]
+}
