@@ -1,18 +1,20 @@
 import { Link } from "react-router-dom";
-import type { AppData, Transaction } from "../types";
+import { useWalletStore } from "../../store";
 import {
   calculateDailyPoints,
   getTotalPoints,
   formatPoints,
 } from "../utils/dailyPointsCalculator";
+import { formatTransactionDate, formatAmount } from "../../utils/formatters";
 
 interface TransactionListScreenProps {
   data: AppData;
 }
+export default function TransactionListScreen() {
+  const data = useWalletStore((state) => state.data);
 
-const TransactionListScreen: React.FC<TransactionListScreenProps> = ({
-  data,
-}) => {
+  if (!data) return null;
+
   const { cardBalance, noPaymentDue, transactions, dailyPoints } = data;
 
   // calculate Daily Points
@@ -193,6 +195,4 @@ const TransactionListScreen: React.FC<TransactionListScreenProps> = ({
       </section>
     </div>
   );
-};
-
-export default TransactionListScreen;
+}

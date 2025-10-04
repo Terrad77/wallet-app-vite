@@ -40,7 +40,7 @@ const TransactionDetailScreen: React.FC<TransactionDetailScreenProps> = ({
   const displayAmount =
     transaction.type === "Credit"
       ? `+$${Math.abs(transaction.amount).toFixed(2)}`
-      : `-$${Math.abs(transaction.amount).toFixed(2)}`;
+      : `$${Math.abs(transaction.amount).toFixed(2)}`;
 
   const amountColor =
     transaction.type === "Credit" ? "text-green-600" : "text-gray-900";
@@ -51,10 +51,10 @@ const TransactionDetailScreen: React.FC<TransactionDetailScreenProps> = ({
         {/* Back Button */}
         <button
           onClick={() => navigate("/")}
-          className="mb-6 p-2 text-gray-700 hover:bg-gray-100 rounded-full transition-colors"
+          className="mb-6 p-2 text-blue-600 hover:bg-gray-100 rounded-full transition-colors"
           aria-label="Go back"
         >
-          <i className="fas fa-arrow-left text-xl"></i>
+          <i className="fa-solid fa-angle-left text-3xl"></i>
         </button>
 
         {/* Transaction Icon and Title */}
@@ -62,9 +62,9 @@ const TransactionDetailScreen: React.FC<TransactionDetailScreenProps> = ({
           <div
             className={`w-20 h-20 ${transaction.color} rounded-full flex items-center justify-center mx-auto mb-4`}
           >
-            <i className={`fas ${transaction.icon} text-3xl`}></i>
+            <i className={` ${transaction.icon} text-4xl`}></i>
           </div>
-          <h3 className="text-3xl font-bold ${amountColor} mb-2">
+          <h3 className={`text-3xl font-bold ${amountColor} mb-2`}>
             {displayAmount}
           </h3>
           <p className="text-gray-500 text-sm">{transaction.title}</p>
@@ -76,7 +76,7 @@ const TransactionDetailScreen: React.FC<TransactionDetailScreenProps> = ({
           <div className="space-y-3">
             <div className="flex justify-between py-2 border-b border-gray-200">
               <span className="text-gray-500">
-                <i className="fas fa-info-circle mr-2"></i>Status
+                <i className="fas fa-info-circle mr-2"></i>Status:
               </span>
               <span
                 className={`font-medium ${
@@ -112,26 +112,6 @@ const TransactionDetailScreen: React.FC<TransactionDetailScreenProps> = ({
               </div>
             )}
 
-            {transaction.authorizedUser && (
-              <div className="flex justify-between py-2 border-b border-gray-200">
-                <span className="text-gray-500">
-                  <i className="fas fa-user mr-2"></i>Authorized User
-                </span>
-                <span className="font-medium text-gray-900">
-                  {transaction.authorizedUser}
-                </span>
-              </div>
-            )}
-
-            <div className="flex justify-between py-2 border-b border-gray-200">
-              <span className="text-gray-500">
-                <i className="fas fa-file-alt mr-2"></i>Description
-              </span>
-              <span className="font-medium text-gray-900 text-right">
-                {transaction.transactionDescription}
-              </span>
-            </div>
-
             <div className="flex justify-between py-2">
               <span className="text-gray-500">
                 <i className="fas fa-receipt mr-2"></i>Total
@@ -148,7 +128,7 @@ const TransactionDetailScreen: React.FC<TransactionDetailScreenProps> = ({
           onClick={() => navigate("/")}
           className="w-full py-3 bg-blue-600 text-white rounded-xl font-medium hover:bg-blue-700 transition-colors"
         >
-          <i className="fas fa-times mr-2"></i>Close
+          Close
         </button>
       </div>
     </div>
