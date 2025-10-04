@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { type AppData } from "../types/models";
+import { type AppData } from "../types";
+
 interface AppDataState {
   data: AppData | null;
   loading: boolean;
@@ -16,14 +17,11 @@ export const useAppData = (): AppDataState => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Загрузка файла из папки public (имитация API-запроса)
         const response = await fetch("/data/mock.json");
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error("Failed to fetch data");
         }
         const jsonData: AppData = await response.json();
-
-        // В реальном приложении здесь можно провести валидацию данных
 
         setState({ data: jsonData, loading: false, error: null });
       } catch (err) {
@@ -31,7 +29,7 @@ export const useAppData = (): AppDataState => {
         setState({
           data: null,
           loading: false,
-          error: "Failed to load application data.",
+          error: err instanceof Error ? err.message : "Unknown error",
         });
       }
     };

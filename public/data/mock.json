@@ -1,80 +1,124 @@
 {
   "cardBalance": {
-    "balance": 917.3,
-    "cardNumber": "**** 5304",
-    "cardName": "Visa Signature"
+    "total": 17.3,
+    "maximumCardLimit": 1500,
+    "currentBalance": 917.3,
+    "availableLimit": 582.7
+  },
+  "noPaymentDue": {
+    "message": "You've paid your balance",
+    "isPaid": true
   },
   "dailyPoints": {
-    "currentPoints": 1500,
-    "dailyIncrease": 125
+    "currentDay": 2,
+    "seasonStartDate": "2025-09-01",
+    "transactions": []
   },
-  "noPaymentDue": true,
   "transactions": [
     {
       "id": "1001",
       "type": "Payment",
       "title": "Apple",
-      "amount": -877.0,
+      "amount": 14.06,
       "currency": "USD",
-      "transactionName": "Apple Pay",
-      "transactionDescription": "MacBook Pro M4 Payment",
-      "date": "2025-10-02T15:30:00Z",
-      "status": "Success"
+      "transactionName": "Apple",
+      "transactionDescription": "Pending - Card Number Used Diana",
+      "date": "2025-10-03T15:30:00Z",
+      "status": "Pending",
+      "cardNumberUsed": "Diana",
+      "authorizedUser": null,
+      "icon": "fa-apple",
+      "color": "bg-gray-100 text-gray-800"
     },
     {
       "id": "1002",
-      "type": "Withdrawal",
-      "title": "ATM Withdrawal",
-      "amount": -32.04,
+      "type": "Credit",
+      "title": "Payment",
+      "amount": 174.0,
       "currency": "USD",
-      "transactionName": "Cash",
-      "transactionDescription": "Local ATM Fee",
-      "date": "2025-10-02T10:15:00Z",
-      "status": "Success"
+      "transactionName": "Payment",
+      "transactionDescription": "From JPMorgan Chase Bank Natio...",
+      "date": "2025-10-01T10:00:00Z",
+      "status": "Success",
+      "cardNumberUsed": null,
+      "authorizedUser": null,
+      "icon": "fa-building-columns",
+      "color": "bg-yellow-100 text-yellow-600"
     },
     {
       "id": "1003",
-      "type": "Transfer",
-      "title": "Starbucks",
-      "amount": -8.5,
+      "type": "Payment",
+      "title": "Apple",
+      "amount": 3.24,
       "currency": "USD",
-      "transactionName": "Coffee",
-      "transactionDescription": "Morning coffee order",
-      "date": "2025-10-01T08:00:00Z",
-      "status": "Success"
+      "transactionName": "Apple",
+      "transactionDescription": "Card Number Used Diana",
+      "date": "2025-10-01T14:20:00Z",
+      "status": "Success",
+      "cardNumberUsed": "Diana",
+      "authorizedUser": null,
+      "icon": "fa-apple",
+      "color": "bg-gray-100 text-gray-800"
     },
     {
       "id": "1004",
-      "type": "Payment",
-      "title": "Gym Club",
-      "amount": -59.99,
+      "type": "Credit",
+      "title": "Payment",
+      "amount": 899.71,
       "currency": "USD",
-      "transactionName": "Fitness",
-      "transactionDescription": "Monthly Membership",
-      "date": "2025-09-30T17:45:00Z",
-      "status": "Pending"
+      "transactionName": "Payment",
+      "transactionDescription": "From JPMorgan Chase Bank Natio...",
+      "date": "2025-09-28T09:15:00Z",
+      "status": "Success",
+      "cardNumberUsed": null,
+      "authorizedUser": null,
+      "icon": "fa-building-columns",
+      "color": "bg-yellow-100 text-yellow-600"
     },
     {
       "id": "1005",
-      "type": "Top-up",
-      "title": "Salary",
-      "amount": 4720.0,
+      "type": "Credit",
+      "title": "Payment",
+      "amount": 873.58,
       "currency": "USD",
-      "transactionName": "Salary",
-      "transactionDescription": "Monthly Income Transfer",
-      "date": "2025-09-28T09:00:00Z",
-      "status": "Success"
+      "transactionName": "Payment",
+      "transactionDescription": "From JPMorgan Chase Bank Natio...",
+      "date": "2025-09-23T11:30:00Z",
+      "status": "Success",
+      "cardNumberUsed": null,
+      "authorizedUser": null,
+      "icon": "fa-building-columns",
+      "color": "bg-yellow-100 text-yellow-600"
     },
     {
       "id": "1006",
       "type": "Payment",
-      "title": "Amazon",
-      "amount": -22.45,
+      "title": "IKEA",
+      "amount": 21.61,
       "currency": "USD",
-      "transactionName": "Shopping",
-      "transactionDescription": "Book order",
-      "date": "2025-09-28T14:22:00Z",
-      "status": "Failed"
+      "transactionName": "IKEA",
+      "transactionDescription": "Round Rock, TX",
+      "date": "2022-10-01T16:45:00Z",
+      "status": "Success",
+      "cardNumberUsed": null,
+      "authorizedUser": null,
+      "icon": "fa-couch",
+      "color": "bg-blue-100 text-blue-600"
+    },
+    {
+      "id": "1007",
+      "type": "Payment",
+      "title": "Target",
+      "amount": 73.58,
+      "currency": "USD",
+      "transactionName": "Target",
+      "transactionDescription": "Cedar Park",
+      "date": "2022-10-01T18:20:00Z",
+      "status": "Success",
+      "cardNumberUsed": null,
+      "authorizedUser": null,
+      "icon": "fa-bullseye",
+      "color": "bg-red-100 text-red-600"
     }
   ]
 }
