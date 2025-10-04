@@ -54,7 +54,7 @@ const TransactionListScreen: React.FC<TransactionListScreenProps> = ({
     if (type === "Credit") {
       return `+$${Math.abs(amount).toFixed(2)}`;
     }
-    return `-$${Math.abs(amount).toFixed(2)}`;
+    return `$${Math.abs(amount).toFixed(2)}`;
   };
 
   return (
@@ -107,9 +107,7 @@ const TransactionListScreen: React.FC<TransactionListScreenProps> = ({
       <section className="bg-white rounded-2xl shadow-sm p-6 mb-6">
         <div className="flex justify-between items-center mb-4">
           <div>
-            <h3 className="text-lg font-semibold text-gray-900">
-              <i className="fas fa-chart-bar mr-2"></i>Daily Points
-            </h3>
+            <h3 className="text-lg font-bold text-gray-900">Daily Points</h3>
             <p className="text-2xl font-bold text-blue-600 mt-1">
               {formatPoints(totalPoints)}
             </p>
@@ -141,8 +139,8 @@ const TransactionListScreen: React.FC<TransactionListScreenProps> = ({
       {/* Latest Transactions Block */}
       <section className="bg-white rounded-2xl shadow-sm p-6">
         <div className="flex justify-between items-center mb-4">
-          <h3 className="text-lg font-semibold text-gray-900">
-            <i className="fas fa-history mr-2"></i>Latest Transactions
+          <h3 className="text-xl font-bold text-gray-900">
+            Latest Transactions
           </h3>
         </div>
 
@@ -154,15 +152,13 @@ const TransactionListScreen: React.FC<TransactionListScreenProps> = ({
               className="w-full flex items-center gap-4 p-3 hover:bg-gray-50 rounded-xl transition-colors"
             >
               <div
-                className={`w-12 h-12 ${transaction.color} rounded-xl flex items-center justify-center flex-shrink-0`}
+                className={`w-12 h-12 ${transaction.color}  rounded-md flex items-center justify-center flex-shrink-0`}
               >
-                <i className={`fas ${transaction.icon} text-xl`}></i>
+                <i className={`${transaction.icon} fa-xl`}></i>
               </div>
 
               <div className="flex-1 text-left">
-                <p className="font-semibold text-gray-900">
-                  {transaction.title}
-                </p>
+                <p className="font-bold text-gray-900">{transaction.title}</p>
                 <div className="flex items-center gap-2">
                   <p className="text-sm text-gray-500">
                     {transaction.status === "Pending" && "Pending - "}
@@ -185,11 +181,9 @@ const TransactionListScreen: React.FC<TransactionListScreenProps> = ({
                 >
                   {formatAmount(transaction.amount, transaction.type)}
                 </p>
-                <p className="text-xs text-gray-400">
+                <p className="text-sm text-gray-400">
                   {transaction.status === "Pending" && (
-                    <span className="text-yellow-600">
-                      <i className="fas fa-clock mr-1"></i>3%
-                    </span>
+                    <span className="text-gray-400">3%</span>
                   )}
                 </p>
               </div>

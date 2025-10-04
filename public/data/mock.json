@@ -22,13 +22,13 @@
       "amount": 14.06,
       "currency": "USD",
       "transactionName": "Apple",
-      "transactionDescription": "Pending - Card Number Used Diana",
+      "transactionDescription": "Pending - Card Number Used",
       "date": "2025-10-03T15:30:00Z",
       "status": "Pending",
       "cardNumberUsed": "Diana",
       "authorizedUser": null,
-      "icon": "fa-apple",
-      "color": "bg-gray-100 text-gray-800"
+      "icon": "fa-brands fa-apple",
+      "color": "bg-gray-600 text-white"
     },
     {
       "id": "1002",
@@ -42,8 +42,8 @@
       "status": "Success",
       "cardNumberUsed": null,
       "authorizedUser": null,
-      "icon": "fa-building-columns",
-      "color": "bg-yellow-100 text-yellow-600"
+      "icon": "fa-brands fa-apple",
+      "color": "bg-[radial-gradient(circle_at_top_left,_#fca311,_#f87171,_#a78bfa,_#a3e635)] text-white"
     },
     {
       "id": "1003",
@@ -52,13 +52,13 @@
       "amount": 3.24,
       "currency": "USD",
       "transactionName": "Apple",
-      "transactionDescription": "Card Number Used Diana",
+      "transactionDescription": "Card Number Used",
       "date": "2025-10-01T14:20:00Z",
       "status": "Success",
       "cardNumberUsed": "Diana",
       "authorizedUser": null,
-      "icon": "fa-apple",
-      "color": "bg-gray-100 text-gray-800"
+      "icon": "fa-brands fa-apple",
+      "color": "bg-gray-600 text-white"
     },
     {
       "id": "1004",
@@ -72,8 +72,8 @@
       "status": "Success",
       "cardNumberUsed": null,
       "authorizedUser": null,
-      "icon": "fa-building-columns",
-      "color": "bg-yellow-100 text-yellow-600"
+      "icon": "fa-brands fa-apple",
+      "color": "bg-[radial-gradient(circle_at_top_left,_#fca311,_#f87171,_#a78bfa,_#a3e635)] text-white"
     },
     {
       "id": "1005",
@@ -87,8 +87,8 @@
       "status": "Success",
       "cardNumberUsed": null,
       "authorizedUser": null,
-      "icon": "fa-building-columns",
-      "color": "bg-yellow-100 text-yellow-600"
+      "icon": "fa-brands fa-apple",
+      "color": "bg-[radial-gradient(circle_at_top_left,_#fca311,_#f87171,_#a78bfa,_#a3e635)] text-white"
     },
     {
       "id": "1006",
@@ -102,8 +102,8 @@
       "status": "Success",
       "cardNumberUsed": null,
       "authorizedUser": null,
-      "icon": "fa-couch",
-      "color": "bg-blue-100 text-blue-600"
+      "icon": "fa-solid fa-couch",
+      "color": "bg-blue-500 text-yellow-300"
     },
     {
       "id": "1007",
@@ -117,8 +117,8 @@
       "status": "Success",
       "cardNumberUsed": null,
       "authorizedUser": null,
-      "icon": "fa-bullseye",
-      "color": "bg-red-100 text-red-600"
+      "icon": "fa-regular fa-circle-dot",
+      "color": "bg-gray-200 text-red-600 text-2xl"
     }
   ]
 }
