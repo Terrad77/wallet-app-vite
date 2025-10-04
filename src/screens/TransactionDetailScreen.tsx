@@ -27,7 +27,7 @@ const TransactionDetailScreen: React.FC<TransactionDetailScreenProps> = ({
     );
   }
 
-  // Форматирование даты
+  // format date
   const formattedDate = new Date(transaction.date).toLocaleDateString("en-US", {
     month: "numeric",
     day: "numeric",
@@ -36,7 +36,7 @@ const TransactionDetailScreen: React.FC<TransactionDetailScreenProps> = ({
     minute: "2-digit",
   });
 
-  // Форматирование суммы
+  // format amount
   const displayAmount =
     transaction.type === "Credit"
       ? `+$${Math.abs(transaction.amount).toFixed(2)}`

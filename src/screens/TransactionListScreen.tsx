@@ -15,15 +15,12 @@ const TransactionListScreen: React.FC<TransactionListScreenProps> = ({
 }) => {
   const { cardBalance, noPaymentDue, transactions, dailyPoints } = data;
 
-  // Расчет Daily Points
-  const dailyPointsData = calculateDailyPoints(
-    dailyPoints.seasonStartDate,
-    dailyPoints.transactions
-  );
+  // calculate Daily Points
+  const dailyPointsData = calculateDailyPoints(dailyPoints.seasonStartDate);
   const totalPoints = getTotalPoints(dailyPointsData);
   const maxPoints = Math.max(...dailyPointsData.map((d) => d.points));
 
-  // Форматирование даты для транзакций
+  // format date for transactions
   const formatTransactionDate = (dateString: string): string => {
     const date = new Date(dateString);
     const now = new Date();
@@ -52,7 +49,7 @@ const TransactionListScreen: React.FC<TransactionListScreenProps> = ({
     });
   };
 
-  // Отображение суммы с правильным знаком
+  // format amount for transaction list
   const formatAmount = (amount: number, type: string): string => {
     if (type === "Credit") {
       return `+$${Math.abs(amount).toFixed(2)}`;

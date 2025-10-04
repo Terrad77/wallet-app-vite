@@ -1,11 +1,9 @@
-import { type Transaction } from "../types";
-
 /**
- * Расчет Daily Points согласно ТЗ:
- * - На 1 день сезона (сентябрь 1 или декабрь 1): 2 очка
- * - На 2 день сезона: 3 очка
- * - На 3+ день: 100% очков предыдущего дня + 60% очков позапрошлого дня
- * - Округление общих очков: если > 1000, показывать в формате "K" (например, 28745 → 29K)
+ * calculate Daily Points according to the rules:
+ * - On the 1st day of the season (September 1 or December 1): 2 points
+ * - On the 2nd day of the season: 3 points
+ * - On the 3rd+ day: 100% of the previous day's points + 60% of the points from two days ago
+ * - Rounding total points: if > 1000, show in "K" format (e.g., 28745 → 29K)
  */
 
 interface DailyPointsData {
@@ -20,14 +18,14 @@ export const calculateDailyPoints = (
   const startDate = new Date(seasonStartDate);
   const today = new Date();
 
-  // Определяем количество дней от начала сезона
+  // define the number of days since the start of the season
   const diffTime = Math.abs(today.getTime() - startDate.getTime());
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
   const pointsArray: DailyPointsData[] = [];
   const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-  // Генерируем последние 7 дней
+  // Generate the last 7 days
   for (let i = 6; i >= 0; i--) {
     const date = new Date(today);
     date.setDate(date.getDate() - i);
@@ -42,7 +40,7 @@ export const calculateDailyPoints = (
     } else if (dayNumber === 2) {
       points = 3;
     } else if (dayNumber > 2) {
-      // 100% от предыдущего дня + 60% от позапрошлого
+      // 100% from previous day + 60% from two days ago
       const prevDayPoints = pointsArray[pointsArray.length - 1]?.points || 3;
       const twoDaysAgoPoints = pointsArray[pointsArray.length - 2]?.points || 2;
 
