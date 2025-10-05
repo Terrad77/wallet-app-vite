@@ -1,17 +1,17 @@
+// src/screens/TransactionDetailScreen.tsx
+
 import { useParams, useNavigate } from "react-router-dom";
-import { type Transaction } from "../types";
+import { useWalletStore } from "../store";
+import { formatAmount } from "../utils/formatters";
 
-interface TransactionDetailScreenProps {
-  transactions: Transaction[];
-}
-
-const TransactionDetailScreen: React.FC<TransactionDetailScreenProps> = ({
-  transactions,
-}) => {
+export default function TransactionDetailScreen() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
-  const transaction = transactions.find((t) => t.id === id);
+  const getTransactionById = useWalletStore(
+    (state) => state.getTransactionById
+  );
+  const transaction = id ? getTransactionById(id) : undefined;
 
   if (!transaction) {
     return (
@@ -21,13 +21,14 @@ const TransactionDetailScreen: React.FC<TransactionDetailScreenProps> = ({
           onClick={() => navigate("/")}
           className="mt-4 text-blue-600 hover:underline"
         >
-          <i className="fas fa-arrow-left mr-2"></i>Back to Home
+          <i className="fas fa-arrow-left mr-2"></i>
+          Back to Home
         </button>
       </div>
     );
   }
 
-  // format date
+  // Format date
   const formattedDate = new Date(transaction.date).toLocaleDateString("en-US", {
     month: "numeric",
     day: "numeric",
@@ -36,12 +37,8 @@ const TransactionDetailScreen: React.FC<TransactionDetailScreenProps> = ({
     minute: "2-digit",
   });
 
-  // format amount
-  const displayAmount =
-    transaction.type === "Credit"
-      ? `+$${Math.abs(transaction.amount).toFixed(2)}`
-      : `$${Math.abs(transaction.amount).toFixed(2)}`;
-
+  // Format amount
+  const displayAmount = formatAmount(transaction.amount, transaction.type);
   const amountColor =
     transaction.type === "Credit" ? "text-green-600" : "text-gray-900";
 
@@ -62,7 +59,7 @@ const TransactionDetailScreen: React.FC<TransactionDetailScreenProps> = ({
           <div
             className={`w-20 h-20 ${transaction.color} rounded-full flex items-center justify-center mx-auto mb-4`}
           >
-            <i className={` ${transaction.icon} text-4xl`}></i>
+            <i className={`${transaction.icon} text-4xl`}></i>
           </div>
           <h3 className={`text-3xl font-bold ${amountColor} mb-2`}>
             {displayAmount}
@@ -76,7 +73,8 @@ const TransactionDetailScreen: React.FC<TransactionDetailScreenProps> = ({
           <div className="space-y-3">
             <div className="flex justify-between py-2 border-b border-gray-200">
               <span className="text-gray-500">
-                <i className="fas fa-info-circle mr-2"></i>Status:
+                <i className="fas fa-info-circle mr-2"></i>
+                Status:
               </span>
               <span
                 className={`font-medium ${
@@ -90,12 +88,14 @@ const TransactionDetailScreen: React.FC<TransactionDetailScreenProps> = ({
                 {transaction.status === "Success" && "Approved"}
                 {transaction.status === "Pending" && (
                   <>
-                    <i className="fas fa-clock mr-1"></i>Pending
+                    <i className="fas fa-clock mr-1"></i>
+                    Pending
                   </>
                 )}
                 {transaction.status === "Failed" && (
                   <>
-                    <i className="fas fa-times-circle mr-1"></i>Failed
+                    <i className="fas fa-times-circle mr-1"></i>
+                    Failed
                   </>
                 )}
               </span>
@@ -104,7 +104,8 @@ const TransactionDetailScreen: React.FC<TransactionDetailScreenProps> = ({
             {transaction.cardNumberUsed && (
               <div className="flex justify-between py-2 border-b border-gray-200">
                 <span className="text-gray-500">
-                  <i className="fas fa-credit-card mr-2"></i>Card Used
+                  <i className="fas fa-credit-card mr-2"></i>
+                  Card Used:
                 </span>
                 <span className="font-medium text-gray-900">
                   {transaction.cardNumberUsed}
@@ -112,9 +113,32 @@ const TransactionDetailScreen: React.FC<TransactionDetailScreenProps> = ({
               </div>
             )}
 
+            {transaction.authorizedUser && (
+              <div className="flex justify-between py-2 border-b border-gray-200">
+                <span className="text-gray-500">
+                  <i className="fas fa-user mr-2"></i>
+                  Authorized User:
+                </span>
+                <span className="font-medium text-gray-900">
+                  {transaction.authorizedUser}
+                </span>
+              </div>
+            )}
+
+            <div className="flex justify-between py-2 border-b border-gray-200">
+              <span className="text-gray-500">
+                <i className="fas fa-file-alt mr-2"></i>
+                Description:
+              </span>
+              <span className="font-medium text-gray-900 text-right max-w-[200px]">
+                {transaction.transactionDescription}
+              </span>
+            </div>
+
             <div className="flex justify-between py-2">
               <span className="text-gray-500">
-                <i className="fas fa-receipt mr-2"></i>Total
+                <i className="fas fa-receipt mr-2"></i>
+                Total:
               </span>
               <span className={`font-bold ${amountColor}`}>
                 {displayAmount}
@@ -128,11 +152,10 @@ const TransactionDetailScreen: React.FC<TransactionDetailScreenProps> = ({
           onClick={() => navigate("/")}
           className="w-full py-3 bg-blue-600 text-white rounded-xl font-medium hover:bg-blue-700 transition-colors"
         >
+          <i className="fas fa-times mr-2"></i>
           Close
         </button>
       </div>
     </div>
   );
-};
-
-export default TransactionDetailScreen;
+}

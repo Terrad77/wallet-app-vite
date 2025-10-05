@@ -1,15 +1,15 @@
+// src/screens/TransactionListScreen.tsx
+
 import { Link } from "react-router-dom";
-import { useWalletStore } from "../../store";
+import { useWalletStore } from "../store";
+import type { Transaction } from "../types";
 import {
   calculateDailyPoints,
   getTotalPoints,
   formatPoints,
 } from "../utils/dailyPointsCalculator";
-import { formatTransactionDate, formatAmount } from "../../utils/formatters";
+import { formatTransactionDate, formatAmount } from "../utils/formatters";
 
-interface TransactionListScreenProps {
-  data: AppData;
-}
 export default function TransactionListScreen() {
   const data = useWalletStore((state) => state.data);
 
@@ -17,47 +17,10 @@ export default function TransactionListScreen() {
 
   const { cardBalance, noPaymentDue, transactions, dailyPoints } = data;
 
-  // calculate Daily Points
+  // Calculate Daily Points
   const dailyPointsData = calculateDailyPoints(dailyPoints.seasonStartDate);
   const totalPoints = getTotalPoints(dailyPointsData);
   const maxPoints = Math.max(...dailyPointsData.map((d) => d.points));
-
-  // format date for transactions
-  const formatTransactionDate = (dateString: string): string => {
-    const date = new Date(dateString);
-    const now = new Date();
-    const diffTime = Math.abs(now.getTime() - date.getTime());
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-    if (diffDays === 0) return "Today";
-    if (diffDays === 1) return "Yesterday";
-    if (diffDays <= 7) {
-      const days = [
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-      ];
-      return days[date.getDay()];
-    }
-
-    return date.toLocaleDateString("en-US", {
-      month: "numeric",
-      day: "numeric",
-      year: "2-digit",
-    });
-  };
-
-  // format amount for transaction list
-  const formatAmount = (amount: number, type: string): string => {
-    if (type === "Credit") {
-      return `+$${Math.abs(amount).toFixed(2)}`;
-    }
-    return `$${Math.abs(amount).toFixed(2)}`;
-  };
 
   return (
     <div className="max-w-md mx-auto px-4 py-6 pb-24">
@@ -94,7 +57,7 @@ export default function TransactionListScreen() {
       {noPaymentDue.isPaid && (
         <section className="bg-green-50 border border-green-200 rounded-2xl p-4 mb-6 flex items-center gap-3">
           <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
-            <i className="fas fa-check text-white text-lg"></i>
+            <i className="fas fa-check text-white text-lg" />
           </div>
           <div>
             <p className="text-sm font-semibold text-green-900">
@@ -114,7 +77,7 @@ export default function TransactionListScreen() {
               {formatPoints(totalPoints)}
             </p>
           </div>
-          <i className="fas fa-arrow-trend-up text-green-500"></i>
+          <i className="fas fa-arrow-trend-up text-green-500" />
         </div>
 
         <div className="flex items-end justify-between h-32 gap-2">
@@ -154,9 +117,9 @@ export default function TransactionListScreen() {
               className="w-full flex items-center gap-4 p-3 hover:bg-gray-50 rounded-xl transition-colors"
             >
               <div
-                className={`w-12 h-12 ${transaction.color}  rounded-md flex items-center justify-center flex-shrink-0`}
+                className={`w-12 h-12 ${transaction.color} rounded-md flex items-center justify-center flex-shrink-0`}
               >
-                <i className={`${transaction.icon} fa-xl`}></i>
+                <i className={`${transaction.icon} fa-xl`} />
               </div>
 
               <div className="flex-1 text-left">
@@ -183,11 +146,11 @@ export default function TransactionListScreen() {
                 >
                   {formatAmount(transaction.amount, transaction.type)}
                 </p>
-                <p className="text-sm text-gray-400">
-                  {transaction.status === "Pending" && (
+                {transaction.status === "Pending" && (
+                  <p className="text-sm text-gray-400">
                     <span className="text-gray-400">3%</span>
-                  )}
-                </p>
+                  </p>
+                )}
               </div>
             </Link>
           ))}

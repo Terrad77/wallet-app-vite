@@ -1,32 +1,41 @@
+import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useAppData } from "./hooks/useAppData";
+import { useWalletStore } from "./store";
 import TransactionListScreen from "./screens/TransactionListScreen";
 import TransactionDetailScreen from "./screens/TransactionDetailScreen";
 
-const WalletApp: React.FC = () => {
-  const { data, loading, error } = useAppData();
+export default function WalletApp() {
+  const { data, loading, error, fetchWalletData } = useWalletStore();
+
+  useEffect(() => {
+    fetchWalletData();
+  }, [fetchWalletData]);
 
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center text-lg text-blue-600 bg-gray-50">
-        <i className="fas fa-spinner fa-spin mr-2"></i>Loading wallet data...
+        <i className="fas fa-spinner fa-spin mr-2"></i>
+        Loading wallet data...
       </div>
     );
   }
 
-  if (error || !data) {
+  if (error) {
     return (
       <div className="min-h-screen p-8 text-center text-red-600 bg-gray-50">
-        <i className="fas fa-exclamation-triangle mr-2"></i>Error loading data:{" "}
-        {error || "Data not found"}
+        <i className="fas fa-exclamation-triangle mr-2"></i>
+        Error loading data: {error}
       </div>
     );
+  }
+
+  if (!data) {
+    return null;
   }
 
   return (
     <Router>
       <div className="min-h-screen bg-gray-50">
-        {/* Header - Only on TransactionList screen */}
         <Routes>
           <Route
             path="/"
@@ -37,7 +46,8 @@ const WalletApp: React.FC = () => {
                     <div className="flex justify-between items-center">
                       <div>
                         <h1 className="text-2xl font-bold text-gray-900">
-                          <i className="fas fa-wallet mr-2"></i>Wallet
+                          <i className="fas fa-wallet mr-2"></i>
+                          Wallet
                         </h1>
                         <p className="text-sm text-gray-500">
                           Manage your finances
@@ -49,21 +59,17 @@ const WalletApp: React.FC = () => {
                     </div>
                   </div>
                 </header>
-                <TransactionListScreen data={data} />
+                <TransactionListScreen />
               </>
             }
           />
 
           <Route
             path="/transaction/:id"
-            element={
-              <TransactionDetailScreen transactions={data.transactions} />
-            }
+            element={<TransactionDetailScreen />}
           />
         </Routes>
       </div>
     </Router>
   );
-};
-
-export default WalletApp;
+}

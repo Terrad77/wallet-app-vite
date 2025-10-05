@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
-import { type AppData, type Transaction, CardBalance } from "../types";
+import { type AppData, type Transaction } from "../types";
 import { walletService } from "../api/services/walletService";
 
 interface WalletState {
