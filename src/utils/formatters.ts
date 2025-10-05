@@ -34,7 +34,7 @@ export function formatTransactionDate(dateString: string): string {
 }
 
 /**
- * Форматирование суммы с правильным знаком
+ * Format amount with sign based on transaction type
  * Credit: +$XXX.XX
  * Payment: -$XXX.XX
  */
@@ -42,11 +42,11 @@ export function formatAmount(amount: number, type: string): string {
   if (type === "Credit") {
     return `+${Math.abs(amount).toFixed(2)}`;
   }
-  return `-${Math.abs(amount).toFixed(2)}`;
+  return `${Math.abs(amount).toFixed(2)}`;
 }
 
 /**
- * Форматирование валюты
+ * Format currency
  */
 export function formatCurrency(
   amount: number,

@@ -26,8 +26,8 @@ export default function TransactionListScreen() {
     <div className="max-w-md mx-auto px-4 py-6 pb-24">
       {/* Card Balance Block */}
       <section className="bg-white rounded-2xl shadow-sm p-6 mb-6">
-        <div className="mb-4">
-          <p className="text-sm text-gray-500 mb-1">Card Balance</p>
+        <div className=" mb-4">
+          <p className="text-sm text-gray-500 mb-1 font-bold">Card Balance</p>
           <h2 className="text-4xl font-bold text-gray-900">
             ${cardBalance.total.toFixed(2)}
           </h2>
